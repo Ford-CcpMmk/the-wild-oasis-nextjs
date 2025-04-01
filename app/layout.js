@@ -4,6 +4,7 @@ import Navigation from "@/app/_components/Navigation";
 import "@/app/_styles/globals.css";
 
 import { Josefin_Sans } from "next/font/google";
+import Header from "./_components/Header";
 
 //  Next.js allows us to do is to very easily and automatically self-host any Google font that we want, without that font being downloaded from Google. And this is really amazing, because it will prevent layout shifts and improve performance and even privacy.
 const josefin = Josefin_Sans({
@@ -30,13 +31,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       {/* All we have to is to import class name in our body, so that our entire webpage will get that font. */}
-      <body className={`${josefin.className} bg-primary-900 text-primary-100 min-h-screen`}>
-        <header>
-          <Logo />
-          <Navigation />
-        </header>
-        <main>{children}</main>
-        <footer>Copyright by The Wild Oasis</footer>
+      <body
+        className={`${josefin.className} antialiased bg-primary-900 text-primary-100 min-h-screen flex flex-col relative`}
+      >
+        <Header />
+        <div className="flex-1 px-8 py-12 grid">
+          <main className="max-w-7xl mx-auto w-full">{children}</main>
+        </div>
       </body>
     </html>
   );
