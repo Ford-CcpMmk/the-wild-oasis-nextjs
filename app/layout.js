@@ -14,8 +14,6 @@ const josefin = Josefin_Sans({
   // This is actually a font with a variable font weight, but if it was not, then we would also specify the weight.
 });
 
-console.log(josefin);
-
 export const metadata = {
   // title: "The Wild Oasis",
   title: {

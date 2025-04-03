@@ -1,0 +1,30 @@
+REACT SERVER COMPONENT (RSC)
+
+React Server Components is a completely new full-stack architecture for building React apps. It introduces the server as a first class citizen in React apps, which means that the server is now an integral part of the React component trees of our applications. Or in other words, the Reactory now extends all the way to the server, like a bridge that closes the gap between client and server. And the way in which React does that is by introducing a new kind of component which are server components.
+
+The term React Server Components, which you'll often see abbreviated as RSC, is the name of this whole new paradigm, so, this new architecture. The term "server component" alone is then the name of the new type of component that RSC introduces. And these are components that are only rendered on the server, never on the client.
+
+They're usually responsible for fetching data right on the server. Now, since server components run only on the server, they have no interactivity, so no state, which means that they require exactly zero JavaScript in the downloadable bundle to do their job. So if we think about this, with server components, we can essentially build our application's backend also with React, which is pretty amazing.
+
+Now, besides server components, of course we still have our old regular components that we already know and that run entirely on the client. Therefore these are called client components and they are responsible for the interactivity.
+
+So together, client and server components allow us to write frontend code, right next to backend code in a way that feels completely natural because it feels just like the regular React apps that we've been building so far, we're still using just components and can even compose server and client components together to build full-stack apps that are really entirely controlled by React.
+
+Now here is one very important thing to understand about all this. React Server Components are not active by default in new React apps. And this makes sense because there is no server involved in a Vite application. So the server needs to be somewhere, it needs to be integrated into this whole idea. And so that's where full-stack frameworks like Next.js or Remix finally come into the picture again.
+So basically, React provides this architecture and frameworks can then choose to adopt and to implement it if they want. And that's exactly what Next.js did in the app router. So any app that we built in the Next.js app folder will use this new RSC architecture in which server components become the default components actually.
+
+So again, server components are now the new default components in this new model. Client components then basically become opt in, so we need to specifically tell a component that it should be a client component if that's what we need.
+
+
+SUSPENSE
+
+Suspense is a built-in React component that we can use to catch or to isolate components that are not ready to be rendered yet because they're doing some asynchronous work. And we say that these components or even entire sub trees are suspending. So conceptually, we can think of Suspense as being like a catch block in a try-catch statement. But instead of catching errors, it catches components that are suspending.
+
+Now the important question here is what might actually cause a component to be suspending in the first place?
+
+There are two main reasons, which are both asynchronous tasks.
+
+1. fetching data using a library that supports Suspense.
+2. loading additional code using React's lazy loading feature.
+
+Now the main use case of Suspense is indeed data fetching. Just note how I mentioned that we need to use a data fetching library that actually supports Suspense. For example, React Query, or also Next.js,

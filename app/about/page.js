@@ -30,12 +30,13 @@ export default function Page() {
       </div>
 
       <div className="col-span-2">
-        {/* It works because we import this image statically then so the nextjs is able to figure out the dimensions by itself. but is not always possible because sometiems we get an image URL from somewhere else. For example, from a database. */}
+        {/* To do responsive image, it works because we import this image statically then so the nextjs is able to figure out the dimensions by itself. but is not always possible because sometiems we get an image URL from somewhere else. For example, from a database. */}
         <Image src={image1} alt="Family sitting around a fire pit in front of cabin" placeholder="blur" quality={80} />
       </div>
 
-      {/* We need to use this technique instead, where this here acts as a container, and then we have that container basically be covered with that image. */}
+      {/* We need to use this technique instead, where this here acts as a container, and then we have that container basically be covered with that image. And we then basically specify the size of that container and make the image fit that container by using object-cover on the image. */}
       <div className="col-span-2 relative aspect-square">
+        {/* We can use either set the dimensions or we need to use the fill to get rid of the error and in this case, we want to make the image is reponsive, that's why we use fill. */}
         <Image src="/about-2.jpg" alt="Family that manages The Wild Oasis" fill className="object-cover" />
       </div>
 
