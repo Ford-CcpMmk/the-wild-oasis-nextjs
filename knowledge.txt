@@ -27,4 +27,4 @@ There are two main reasons, which are both asynchronous tasks.
 1. fetching data using a library that supports Suspense.
 2. loading additional code using React's lazy loading feature.
 
-Now the main use case of Suspense is indeed data fetching. Just note how I mentioned that we need to use a data fetching library that actually supports Suspense. For example, React Query, or also Next.js,
+Now the main use case of Suspense is indeed data fetching. Just note how I mentioned that we need to use a data fetching library that actually supports Suspense. For example, React Query, Remix or also Next.js,

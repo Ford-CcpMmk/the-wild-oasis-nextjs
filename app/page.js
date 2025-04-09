@@ -16,7 +16,9 @@ export default function Page() {
       />
 
       <div className="relative z-10 text-center">
-        <h1 className="text-8xl text-primary-50 mb-10 tracking-tight font-normal">Welcome to paradise.</h1>
+        <h1 className="text-8xl text-primary-50 mb-10 tracking-tight font-normal">
+          Welcome to paradise.
+        </h1>
         {/* The whole application is downloaded again. And so that's not what we want at all. Instead, we want our application to feel a bit like a single page application like we had before. */}
         {/* <a href="/cabins">Explore luxury cabins</a> */}
 
