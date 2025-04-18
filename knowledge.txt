@@ -198,3 +198,16 @@ How we can revalidate each cache and how we can opt out(ยกเลิก) ?
  3.1 Revalidate: this one also gets revalidated by manually revalidating the data cache with revalidatePath or revalidateTag as long as it's being done in a server action, which we'll learn all about later. And once again, if we think about this, it makes sense that it works this way because if we declare the data in the cache as being old by revalidating it, then the pages that are cached in the user's browser and depend on this data should also be refreshed with the fresh data. There are, however, two more ways of revalidating the router cache, which is forcing a reload with Router.refresh or by setting or deleting a cookie in a server action. 
  
  3.2 Opt out: it's not possible to opt out of this cache. This, in my opinion, makes no sense at all, and I can't actually imagine that this will change in the future because it's indeed quite problematic. When our users use our app, they expect the data that they see to be always up-to-date, and we can simply not guarantee that because of this cache. If the data on a page is updated by something other than revalidation, so without the cache knowing about this update, we're out of luck.
+
+
+ NEXTAUTH (auth with google)
+
+ 1. setting env with NEXTAUTH_URL(url of your running app) & NEXTAUTH_SECRET (Whatever you want)
+ 2. Configure Google in order to accept logins for out application.
+  2.1 Go to Google developer console
+  2.2 Create a new project
+  2.3 Go to APIs & Services and then OAuth consent screen (this is kind of screen that you see when you log in using google account) and create it.
+  2.4 OAuth consent screen, you will see clients tab then create OAuth 2.0. Authorized Javascript origins need to be exactly the same as NEXTAUTH_URL and Authorized redirect URLs http://localhost:3000/api/auth/callback/google
+  2.5 Copy client id and client secret to env
+  2.6 npm install next-auth@beta
+  2.7 Just code (check out auth.js and api/auth/[...nextauth]/route.js)
