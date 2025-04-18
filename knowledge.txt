@@ -211,3 +211,19 @@ How we can revalidate each cache and how we can opt out(ยกเลิก) ?
   2.5 Copy client id and client secret to env
   2.6 npm install next-auth@beta
   2.7 Just code (check out auth.js and api/auth/[...nextauth]/route.js)
+
+
+
+MIDDLEWARE
+
+In the case of Next.js, a middleware is a function that sits between the incoming request and the response. Or in other words, Next.js middleware allows us to run some code based on the incoming request but before the response is completed. So, the way this works is that by default, middleware runs before every single route in our Next.js app. Now, we can use a so-called matcher to specify for which routes the middleware should run. 
+
+But the important point is that middleware always runs after the request, but before the route the user is visiting is rendered and sent back. Middleware is chunk of code is in one central place that runs before every route. This way we can keep our components clean and leave that common logic in a central place, which needs to be one, and exactly one, middleware function. This function, called middleware, needs to be exported from middleware.js. and this file needs to be in the root folder of the Next.js project.
+
+The main function of middleware, which powers many different use cases, is reading incoming cookies and headers, as well as setting cookies and headers on the response. This enables us to implement features such as authentication and authorization, server-side analytics, redirects based on geolocation, for example, for internationalization, A/B testing, and many more.
+
+The middleware function always needs to produce a response, which can happen in two ways.
+
+1. The first and most common way to produce a response is  the middleware function redirects or rewrites to some route in our app, or in other words, that the middleware runs before routes are rendered.
+
+2. Directly send a JSON response to the client. Now, we can still read and set cookies, and headers, of course, but in this case, the route won't ever be reached and rendered, so it's completely bypassed.

@@ -8,6 +8,12 @@ const authConfig = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
   ],
+  callbacks: {
+    // NextAuth is going to call this function here whenever one user tries to access route that has been protected. (we specified on matcher (middleware.js)).
+    authorized({ auth, request }) {
+      return !!auth?.user;
+    },
+  },
 };
 
 export const {
