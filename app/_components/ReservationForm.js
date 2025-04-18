@@ -1,4 +1,10 @@
+"use client";
+
+import { useReservation } from "./ReservationContext";
+
 function ReservationForm({ cabin }) {
+  const { range } = useReservation();
+
   // CHANGE
   const maxCapacity = cabin;
 
@@ -40,9 +46,7 @@ function ReservationForm({ cabin }) {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="observations">
-            Anything we should know about your stay?
-          </label>
+          <label htmlFor="observations">Anything we should know about your stay?</label>
           <textarea
             name="observations"
             id="observations"
