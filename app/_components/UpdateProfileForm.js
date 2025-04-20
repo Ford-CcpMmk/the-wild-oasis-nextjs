@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { updateGuest } from "../_lib/actions";
+import { useFormStatus } from "react-dom";
 
 export default function UpdateProfileForm({ guest, children }) {
   const [count, setCounter] = useState(0);
@@ -55,11 +56,24 @@ export default function UpdateProfileForm({ guest, children }) {
         />
       </div>
 
+      {/* Add a loading indicator to let the user know that the form is currently submitting. To let this button know that this action is doing some work, we need to use useFormStatus hook from ReactDOM.*/}
+      {/* Now, what's very important and also a bit strange about this hook, it must be used in a component that's rendered inside a form. NOT THIS COMPONENT THAT CONTAINS A FORM !!!!. If the hook was here, it wouldn't know about the status of this form. */}
       <div className="flex justify-end items-center gap-6">
-        <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
-          Update profile
-        </button>
+        <Button />
       </div>
     </form>
+  );
+}
+
+function Button() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
+      disabled={pending}
+    >
+      {pending ? "Updating..." : "Update profile"}
+    </button>
   );
 }
