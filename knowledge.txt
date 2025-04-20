@@ -259,3 +259,12 @@ Now, besides forms, Server Actions can also be called just like regular function
 Now, when the underlying data of our page changes, the UI must update as a result, right? However, since that data is not stored as state on the client, we do not update the UI by updating state. Instead, what we need to do is to manually revalidate the data cache whenever we perform a data mutation. So Server Actions are tightly integrated into the Next.js caching and revalidation system. And so we can easily revalidate the cache on demand with revalidatePath and revalidateTag,
 
 Server Actions, we can also work with cookies and really run any other code that we want here, as long as it's relevant to the action that we're performing. But no matter what we do, we always need to keep in mind that this code is effectively running on our backend, and therefore, we need to make sure that the user is authorized to perform the action, and we need to assume that inputs are unsafe. So just like we do in regular backend development.
+
+
+OPTIMISTIC UI
+
+Optimistic UI is a trick and a technique that we can use in order to improve the perceived performance of a user interface. And it's called optimistic(มองโลกในแง่ดี) because we assume that a certain asynchronous operation will be successful before it has even finished, so while it's still working in the background.
+
+Now in this case, what we're gonna do is to remove a booking here from the UI immediately when the user clicks one of these delete buttons here. So while it is actually still being deleted in the background. So in this situation, we're being optimistic that the deletion will indeed be successful. And if it's not, then the state will simply return and the UI will come back to this current form. So the goal of this technique is to improve the user experience by a lot, because it makes the app feel so much faster and more responsive, without having all these loading spinners all over the place.
+
+Now, React can help us implement this common pattern by using a new modern hook called useOptimistic. And so this hook allows us to show a different new state while some async action is still happening.
