@@ -1,7 +1,7 @@
 "use client";
 
 import { useOptimistic } from "react";
-import { deleteReservation } from "../_lib/actions";
+import { deleteBooking } from "../_lib/actions";
 import ReservationCard from "./ReservationCard";
 
 export default function ReservationList({ bookings }) {
@@ -22,7 +22,7 @@ export default function ReservationList({ bookings }) {
   // And so down here, we then simply create a new function because that is what makes most sense in our example where we basically combine these two. So first the optimistic operation and then the actual operation.
   async function handleDelete(bookingId) {
     optimisticDelete(bookingId);
-    await deleteReservation(bookingId);
+    await deleteBooking(bookingId);
   }
 
   return (
